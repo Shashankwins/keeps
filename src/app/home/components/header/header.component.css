@@ -1,0 +1,19 @@
+nav{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.user{
+    display: inline-block;
+    padding: 8px 14px;
+    color: white;
+    border-radius: 4px;
+    margin-right: 10px;
+    background-color: #673ab7;;
+}
+
+.user p{
+    margin: 0px;
+    padding: 0;
+}

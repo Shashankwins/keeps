@@ -1,0 +1,37 @@
+<div class="header">
+    <app-header></app-header>
+</div>
+<div class="addNote">
+    <ng-container *ngIf="(!flag)">
+        <div class="addNoteBtn">
+            <button mat-flat-button color="primary" (click)="changeFlag()">Add new note</button>
+        </div>
+    </ng-container>
+    <ng-container *ngIf="flag">
+        <form class="noteForm" [formGroup]="noteForm">
+            <mat-form-field class="example-full-width" appearance="outline">
+              <mat-label>Title</mat-label>
+              <input matInput placeholder="Title" formControlName="title">
+            </mat-form-field>
+            <mat-form-field class="example-full-width"  appearance="outline">
+              <mat-label>Description</mat-label>
+              <textarea matInput placeholder="Description" formControlName="desc"></textarea>
+            </mat-form-field>   
+            <ng-container *ngIf="!flag2; else elseBlock">
+                <div class="formBtn">
+                    <button mat-flat-button color="warn" (click)="clear()">Clear</button>
+                    <button  mat-flat-button color="primary" (click)="saveNote()">Save</button>
+                </div>                
+            </ng-container>
+            <ng-template #elseBlock>
+                <div class="formBtn">
+                    <button mat-flat-button color="warn" (click)="remove()">Delete</button>
+                    <button mat-flat-button color="primary" (click)="update()">Update</button>
+                </div>
+            </ng-template>
+        </form>
+    </ng-container>
+    <div class="notes" *ngIf="notes.length">
+        <app-note (editNote)= "edit($event)" [notesList]="notes" ></app-note>
+    </div>
+</div>

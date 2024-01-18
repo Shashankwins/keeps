@@ -1,0 +1,47 @@
+.header{
+    width: 100%;
+    padding: 10px;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+}
+
+.addNote{
+    max-width: 1170px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 20px 0;
+    overflow: auto;
+}
+
+.notes{
+    max-width: 1170px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 20px;
+}
+
+.noteForm {
+    width: 60%;
+    margin: 0 auto;
+}
+  
+.example-full-width {
+    width: 100%;
+}
+
+.noteForm button{
+    width: 100px
+}
+
+.formBtn{
+    display: flex;
+    justify-content:space-between;
+}
+
+.addNoteBtn{
+    padding: 20px 0;
+    display: flex;
+    justify-content: center;
+}

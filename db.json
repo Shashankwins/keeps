@@ -1,0 +1,96 @@
+{
+  "user": [
+    {
+      "id": "8263",
+      "username": "shashank033",
+      "uname": "Shashank Bhardwaj",
+      "password": "Shashank@1998"
+    },
+    {
+      "id": "cb7b",
+      "username": "deepak07",
+      "uname": "Deepak Sharma",
+      "password": "Test@123"
+    },
+    {
+      "id": "18b3",
+      "username": "priya04",
+      "uname": "Priya Saini",
+      "password": "Test@1234"
+    },
+    {
+      "id": "70a0",
+      "username": "Abhi2",
+      "uname": "Abhishek Pathania",
+      "password": "Test@123"
+    },
+    {
+      "id": "03a3",
+      "username": "Test",
+      "uname": "test",
+      "password": "test"
+    },
+    {
+      "id": "b0a3",
+      "username": "hari12",
+      "uname": "Hari Krishan",
+      "password": "Test@123"
+    },
+    {
+      "id": "d69a",
+      "username": "piyu12",
+      "uname": "piyu saini",
+      "password": "piyu@12"
+    }
+  ],
+  "notes": [
+    {
+      "title": "Hello",
+      "desc": "Priya Again hahahaa",
+      "userId": "18b3",
+      "id": "2104"
+    },
+    {
+      "id": "7b3c",
+      "title": "Shasdsad",
+      "desc": "sadsadasd",
+      "userId": "03a3"
+    },
+    {
+      "id": "1d4b",
+      "title": "asdsad",
+      "desc": "asdasdsadsadsad",
+      "userId": "03a3"
+    },
+    {
+      "id": "9e3d",
+      "title": "asdas",
+      "desc": "dasdasdasd",
+      "userId": "03a3"
+    },
+    {
+      "id": "b1a5",
+      "title": "Hello",
+      "desc": "Hari Krishan",
+      "userId": "b0a3"
+    },
+    {
+      "id": "3a6f",
+      "title": "Hello ",
+      "desc": "Priya ",
+      "userId": "18b3"
+    },
+    {
+      "title": "hello",
+      "desc": "piyu",
+      "userId": "d69a",
+      "id": "dd32"
+    },
+    {
+      "id": "bc44",
+      "title": "Hello",
+      "desc": "Shashank",
+      "userId": "8263"
+    }
+  ]
+}
