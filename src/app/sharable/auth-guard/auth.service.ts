@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { UserService } from '../services/user.service';
-import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 
 
@@ -10,8 +9,8 @@ import { Router } from '@angular/router';
 export class AuthService  {
   
   userList : any[] = [];
-  constructor(private get: UserService, private routes: Router){
-    this.get.getUserList().subscribe(list => {
+  constructor(private _userService: UserService, private _routes: Router){
+    this._userService.getUserList().subscribe(list => {
     this.userList = list;
     })
   }
@@ -21,7 +20,7 @@ export class AuthService  {
       if(this.userList[i].username === user.username && this.userList[i].password === user.password){
         sessionStorage.setItem('currentUser', this.userList[i].uname);
         sessionStorage.setItem('userId', this.userList[i].id);
-        this.routes.navigateByUrl('/home');
+        this._routes.navigateByUrl('/home');
         return true;
       }
       else if(i == this.userList.length-1){
@@ -30,5 +29,4 @@ export class AuthService  {
     }
     return false;
   }
-
 }

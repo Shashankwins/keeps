@@ -5,11 +5,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { LoginModule } from './login/login.module';
-import { SignupModule } from './signup/signup.module';
-import { HomeModule } from './home/home.module';
 import { FormsModule } from '@angular/forms';
 import { MaterialModule } from './sharable/material/material/material.module';
+import { HomeModule } from './home/home.module';
+import { LoginModule } from './login/login.module';
+import { SignupModule } from './signup/signup.module';
 
 @NgModule({
   declarations: [
@@ -20,11 +20,11 @@ import { MaterialModule } from './sharable/material/material/material.module';
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    LoginModule,
-    SignupModule,
-    HomeModule,
     FormsModule,
-    MaterialModule
+    MaterialModule,
+    HomeModule,
+    LoginModule,
+    SignupModule
   ],
   providers: [],
   bootstrap: [AppComponent]

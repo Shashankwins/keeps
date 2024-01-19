@@ -11,10 +11,10 @@ export class NotesGroupComponent implements OnInit{
   @Input() label : string = '';
   @Input() type : string = '';
   @Input() control : string = '';
-  @Input() group! : FormGroup;
- 
+  @Input() formGroup! : FormGroup;
+
   ngOnInit(): void {
-    this.group.addControl(this.control, new FormControl('hello',Validators.required))
+    this.formGroup.addControl(this.control, new FormControl('', Validators.required))
   }
 }
 

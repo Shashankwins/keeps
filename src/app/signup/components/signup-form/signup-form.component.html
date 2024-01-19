@@ -1,20 +1,11 @@
 <section class="wrapper">
     <div class="formWrapper">
         <h1>User Sign-Up</h1>
-        <form [formGroup]="signUp" (ngSubmit)="save()">
-            <mat-form-field class="example-full-width" appearance="outline">
-                <mat-label>Username</mat-label>
-                <input matInput placeholder="Username" type="text" formControlName="username">
-            </mat-form-field>
-            <mat-form-field class="example-full-width" appearance="outline">
-                <mat-label>Full Name</mat-label>
-                <input matInput placeholder="Your Name" type="text" maxlength="20" formControlName="uname">                
-            </mat-form-field>
-            <mat-form-field class="example-full-width" appearance="outline">
-                <mat-label>Password</mat-label>
-                <input matInput placeholder="Password" type="password"  formControlName="password">
-            </mat-form-field>
-            <button type="submit" mat-flat-button color="primary">Signup</button>
+        <form [formGroup]="signUpForm">
+            <app-notes-group [control]="'username'" [label]="'Username'" [type]="'text'" [formGroup]="signUpForm"></app-notes-group>
+            <app-notes-group [control]="'uname'" [label]="'Full Name'" [type]="'text'" [formGroup]="signUpForm"></app-notes-group>
+            <app-notes-group [control]="'password'" [label]="'Password'" [type]="'password'" [formGroup]="signUpForm"></app-notes-group>
+            <button mat-flat-button color="primary" (click)="save()">Signup</button>
         </form>
         <p>Already have an account? <a routerLink="/login" >Login</a></p>
     </div>

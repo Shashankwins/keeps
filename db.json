@@ -47,6 +47,18 @@
       "username": "sachin03",
       "uname": "Sachin Shrma",
       "password": "Test@123"
+    },
+    {
+      "id": "75eb",
+      "username": "deepak",
+      "uname": "deepak",
+      "password": "deepak"
+    },
+    {
+      "id": "31ce",
+      "username": "newuser",
+      "uname": "User",
+      "password": "Test@123"
     }
   ],
   "notes": [

@@ -7,10 +7,10 @@ import { Router } from '@angular/router';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
- constructor(private route: Router){}
+ constructor(private routes: Router){}
  currentUser = sessionStorage.getItem('currentUser');
  logout(){
   sessionStorage.clear();
-  this.route.navigateByUrl('/login');
+  this.routes.navigateByUrl('/login');
  }
 }

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormGroup,} from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/sharable/services/user.service';
 
@@ -9,38 +9,36 @@ import { UserService } from 'src/app/sharable/services/user.service';
   styleUrls: ['./signup-form.component.css']
 })
 export class SignupFormComponent {
-  signUp : FormGroup;
+  signUpForm : FormGroup;
   users : any ;
   flag : boolean = false;
-  constructor( private set: UserService, private routes: Router){
-    this.signUp = new FormGroup({
-      username : new FormControl('',[Validators.required]),
-      uname : new FormControl('',[Validators.required]),
-      password : new FormControl('',[Validators.required])
-    })
-    this.set.getUserList().subscribe(list =>{
+  constructor( private _userService: UserService, private _routes: Router){
+    this.signUpForm = new FormGroup({})
+    this._userService.getUserList().subscribe(list =>{
       this.users = list;
     })
   }
 
   save(){
     for(let i=0;i<this.users.length;i++){
-      if(this.users[i].username === this.signUp.value.username){
+      if(this.users[i].username === this.signUpForm.value.username){
         this.flag = true;
+        break;
       }
     }
     if(!this.flag){
-      let  user = { username: this.signUp.value.username,
-      uname: this.signUp.value.uname,
-      password: this.signUp.value.password}
-      if(!this.signUp.invalid){
-      this.set.setUserData(user).subscribe(user =>{})
-      this.routes.navigateByUrl('/login');
+      let  user = { username: this.signUpForm.value.username,
+      uname: this.signUpForm.value.uname,
+      password: this.signUpForm.value.password}
+      if(!this.signUpForm.invalid){
+      this._userService.setUserData(user).subscribe()
+      this._routes.navigateByUrl('/login');
       }
     }
     else{
       alert("user already exist");
-      this.signUp.reset();
+      this.signUpForm.reset();
+      this.signUpForm.markAsUntouched();
     } 
   }; 
 }

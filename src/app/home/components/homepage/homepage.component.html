@@ -9,14 +9,11 @@
     </ng-container>
     <ng-container *ngIf="flag">
         <form class="noteForm" [formGroup]="noteForm">
-            <mat-form-field class="example-full-width" appearance="outline">
-              <mat-label>Title</mat-label>
-              <input matInput placeholder="Title" formControlName="title">
-            </mat-form-field>
+            <app-notes-group [control]="'title'" [label]="'Title'" [type]="'text'" [formGroup]="noteForm"></app-notes-group>
             <mat-form-field class="example-full-width"  appearance="outline">
               <mat-label>Description</mat-label>
               <textarea matInput placeholder="Description" formControlName="desc"></textarea>
-            </mat-form-field>   
+            </mat-form-field>
             <ng-container *ngIf="!flag2; else elseBlock">
                 <div class="formBtn">
                     <button mat-flat-button color="warn" (click)="clear()">Clear</button>
@@ -32,6 +29,6 @@
         </form>
     </ng-container>
     <div class="notes" *ngIf="notes.length">
-        <app-note (editNote)= "edit($event)" [notesList]="notes" ></app-note>
+        <app-note (editNote)= "edit($event)" [notesList]="notes"></app-note>
     </div>
 </div>

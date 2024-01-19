@@ -2,14 +2,8 @@
     <div class="formWrapper">
         <h1>User Login</h1>
         <form [formGroup]="loginForm">
-            <mat-form-field class="example-full-width" appearance="outline">
-                <mat-label>Username</mat-label>
-                <input matInput placeholder="Username" type="text" formControlName="username">
-            </mat-form-field>
-            <mat-form-field class="example-full-width" appearance="outline">
-                <mat-label>Enter your password</mat-label>
-                <input matInput placeholder="Password" type="password" formControlName="password">
-            </mat-form-field>
+            <app-notes-group [control]="'username'" [label]="'Username'" [type]="'text'" [formGroup]="loginForm"></app-notes-group>
+            <app-notes-group [control]="'password'" [label]="'Enter your password'" [type]="'password'" [formGroup]="loginForm"></app-notes-group>
             <button  type="submit" mat-flat-button color="primary" (click)="auth()">Login</button>
         </form>
         <p>Don't have an account? <a routerLink="" >Sign Up</a></p>

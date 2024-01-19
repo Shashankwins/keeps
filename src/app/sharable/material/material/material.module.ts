@@ -4,13 +4,14 @@ import { MatButtonModule } from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
 import {MatCardModule} from '@angular/material/card';
 import {MatIconModule} from '@angular/material/icon'; 
-import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from 'src/app/app-routing.module';
+import { NotesGroupComponent } from '../notes-group/notes-group.component';
 
 
 
 @NgModule({
-  declarations: [],
+  declarations: [NotesGroupComponent],
   imports: [
     CommonModule,
     MatButtonModule,
@@ -29,7 +30,8 @@ import { AppRoutingModule } from 'src/app/app-routing.module';
     MatIconModule,
     ReactiveFormsModule,
     FormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NotesGroupComponent
   ]
 })
 export class MaterialModule { }

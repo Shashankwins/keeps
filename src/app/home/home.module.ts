@@ -6,19 +6,19 @@ import { MaterialModule } from '../sharable/material/material/material.module';
 import { HeaderComponent } from './components/header/header.component';
 import { NoteComponent } from './components/note/note.component';
 import { NotesService } from '../sharable/services/notes.service';
-import { NotesGroupComponent } from './components/notes-group/notes-group.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     HomepageComponent,
     HeaderComponent,
-    NoteComponent,
-    NotesGroupComponent
+    NoteComponent
   ],
   imports: [
     CommonModule,
     AppRoutingModule,
-    MaterialModule
+    MaterialModule,
+    ReactiveFormsModule
   ],
   providers:[NotesService]
 })
