@@ -10,6 +10,7 @@ import { MaterialModule } from './sharable/material/material/material.module';
 import { HomeModule } from './home/home.module';
 import { LoginModule } from './login/login.module';
 import { SignupModule } from './signup/signup.module';
+import { SchoolModule } from './school/school.module';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { SignupModule } from './signup/signup.module';
     MaterialModule,
     HomeModule,
     LoginModule,
-    SignupModule
+    SignupModule,
+    SchoolModule
   ],
   providers: [],
   bootstrap: [AppComponent]

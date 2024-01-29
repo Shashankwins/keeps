@@ -1,0 +1,9 @@
+<div class="wrapper">
+    <h2>School Registration Form</h2>
+    <form [formGroup]="skoolReg">    
+        <ng-container *ngFor="let field of fields" >
+            <app-notes-group [label]="field.label" [type]="field.type" [control]="field.control" [formGroup]="skoolReg"></app-notes-group>
+        </ng-container>
+    </form>
+    <button mat-flat-button color="primary">Register</button>       
+</div>
