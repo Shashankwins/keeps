@@ -6,11 +6,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.example</groupId>
-    <artifactId>my-app</artifactId>
+    <artifactId>keeps-app</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>My App</name>
+    <name>Keeps App</name>
     <description>A sample Java app for Jenkins + SonarQube analysis</description>
 
     <properties>
@@ -48,14 +48,14 @@
                 <version>3.1.2</version>
             </plugin>
 
-            <!-- ✅ SonarQube Maven Plugin -->
+            <!-- SonarQube Maven Plugin -->
             <plugin>
                 <groupId>org.sonarsource.scanner.maven</groupId>
                 <artifactId>sonar-maven-plugin</artifactId>
                 <version>3.10.0.2594</version>
             </plugin>
 
-            <!-- ✅ JaCoCo plugin for code coverage -->
+            <!-- JaCoCo for coverage -->
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
