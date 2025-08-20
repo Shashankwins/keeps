@@ -25,19 +25,20 @@ pipeline {
             }
         }
 
-        stage('SonarQube Analysis') {
-            steps {
-                withSonarQubeEnv('SonarQube') {   // "SonarQube" is the Jenkins server config name
-                    sh """
-                        mvn sonar:sonar \
-                        -Dsonar.projectKey=keeps \
-                        -Dsonar.projectName=keeps \
-                        -Dsonar.host.url=http://your-sonarqube-server:9000 \
-                        -Dsonar.login=$SONARQUBE
-                    """
-                }
-            }
+   stage('SonarQube Analysis') {
+    steps {
+        withSonarQubeEnv('SonarQube') {   // "SonarQube" is Jenkins global tool config name
+            sh """
+                mvn sonar:sonar \
+                -Dsonar.projectKey=keeps \
+                -Dsonar.projectName=keeps \
+                -Dsonar.host.url=http://your-sonarqube-server:9000 \
+                -Dsonar.login=$SONARQUBE
+            """
         }
+    }
+}
+
 
         stage('Quality Gate') {
             steps {
