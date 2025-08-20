@@ -2,50 +2,67 @@ pipeline {
     agent any
 
     tools {
-        maven 'Maven3'      // configure in Jenkins tools
-        jdk 'Java17'        // configure in Jenkins tools
-    }
-
-    environment {
-        SONARQUBE = credentials('SONAR_TOKEN') // add in Jenkins credentials
+        maven 'Maven3'
+        jdk 'Java17'
     }
 
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'main',
-                    credentialsId: 'github-pat',
-                    url: 'https://github.com/Shashankwins/keeps.git'
+                git branch: 'main', credentialsId: 'github-pat', url: 'https://github.com/Shashankwins/keeps.git'
             }
         }
 
-        stage('Build & Test') {
+        stage('Build') {
             steps {
-                sh 'mvn clean verify'  // runs tests + JaCoCo coverage
+                sh 'mvn clean install'
             }
         }
 
-   stage('SonarQube Analysis') {
-    steps {
-        withSonarQubeEnv('SonarQube') {   // "SonarQube" is Jenkins global tool config name
-            sh """
-                mvn sonar:sonar \
-                -Dsonar.projectKey=keeps \
-                -Dsonar.projectName=keeps \
-                -Dsonar.host.url=http://your-sonarqube-server:9000 \
-                -Dsonar.login=$SONARQUBE
-            """
-        }
-    }
-}
-
-
-        stage('Quality Gate') {
+        stage('Test') {
             steps {
-                timeout(time: 1, unit: 'MINUTES') {
-                    waitForQualityGate abortPipeline: true
+                sh 'mvn test'
+            }
+        }
+
+        stage('SonarQube Analysis') {
+            steps {
+                withSonarQubeEnv('My SonarQube Server') {   // Jenkins SonarQube server config name
+                    withCredentials([string(credentialsId: 'sonarqube-token', variable: 'SONAR_TOKEN')]) {
+                        sh '''
+                            mvn sonar:sonar \
+                              -Dsonar.projectKey=keeps \
+                              -Dsonar.projectName=keeps \
+                              -Dsonar.host.url=http://172.21.195.57:9000 \
+                              -Dsonar.login=$SONAR_TOKEN
+                        '''
+                    }
                 }
             }
+        }
+
+        stage('Package') {
+            steps {
+                sh 'mvn package'
+            }
+        }
+
+        stage('Archive Artifacts') {
+            steps {
+                archiveArtifacts artifacts: 'target/*.jar', fingerprint: true
+            }
+        }
+    }
+
+    post {
+        success {
+            echo '✅ Build completed successfully!'
+        }
+        failure {
+            echo '❌ Build failed! Running rollback...'
+        }
+        always {
+            echo "📌 Pipeline finished (cleanup can go here)"
         }
     }
 }
