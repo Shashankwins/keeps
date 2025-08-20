@@ -2,67 +2,49 @@ pipeline {
     agent any
 
     tools {
-        maven 'Maven3'
-        jdk 'Java17'
+        maven 'Maven3'      // configure in Jenkins tools
+        jdk 'Java17'        // configure in Jenkins tools
+    }
+
+    environment {
+        SONARQUBE = credentials('sonarqube-token') // add in Jenkins credentials
     }
 
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'main', credentialsId: 'github-pat', url: 'https://github.com/vishalsharma-netizen/Test-Repo.git'
+                git branch: 'main',
+                    credentialsId: 'github-pat',
+                    url: 'https://github.com/Shashankwins/keeps.git'
             }
         }
 
-        stage('Build') {
+        stage('Build & Test') {
             steps {
-                sh 'mvn clean install'
-            }
-        }
-
-        stage('Test') {
-            steps {
-                sh 'mvn test'
+                sh 'mvn clean verify'  // runs tests + JaCoCo coverage
             }
         }
 
         stage('SonarQube Analysis') {
             steps {
-                withSonarQubeEnv('My SonarQube Server') {   // Jenkins SonarQube server config name
-                    withCredentials([string(credentialsId: 'SONAR_TOKEN', variable: 'SONAR_TOKEN')]) {
-                        sh '''
-                            mvn sonar:sonar \
-                              -Dsonar.projectKey=keeps \
-                              -Dsonar.projectName=keeps \
-                              -Dsonar.host.url=http://172.21.195.57:9000 \
-                              -Dsonar.login=$SONAR_TOKEN
-                        '''
-                    }
+                withSonarQubeEnv('SonarQube') {   // "SonarQube" is the Jenkins server config name
+                    sh """
+                        mvn sonar:sonar \
+                        -Dsonar.projectKey=keeps \
+                        -Dsonar.projectName=keeps \
+                        -Dsonar.host.url=http://your-sonarqube-server:9000 \
+                        -Dsonar.login=$SONARQUBE
+                    """
                 }
             }
         }
 
-        stage('Package') {
+        stage('Quality Gate') {
             steps {
-                sh 'mvn package'
+                timeout(time: 1, unit: 'MINUTES') {
+                    waitForQualityGate abortPipeline: true
+                }
             }
-        }
-
-        stage('Archive Artifacts') {
-            steps {
-                archiveArtifacts artifacts: 'target/*.jar', fingerprint: true
-            }
-        }
-    }
-
-    post {
-        success {
-            echo '✅ Build completed successfully!'
-        }
-        failure {
-            echo '❌ Build failed! Running rollback...'
-        }
-        always {
-            echo "📌 Pipeline finished (cleanup can go here)"
         }
     }
 }
