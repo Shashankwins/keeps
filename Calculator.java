@@ -6,7 +6,8 @@ public class Calculator {
     }
 
     public int divide(int a, int b) {
-        // ❌ Bug: division by zero not handled
+        // Bug: division by zero not handled
         return a / b;
     }
 }
+
