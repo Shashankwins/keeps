@@ -4,7 +4,6 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class CalculatorTest {
-
     @Test
     public void testAdd() {
         Calculator calc = new Calculator();
@@ -17,3 +16,4 @@ public class CalculatorTest {
         assertEquals(2, calc.divide(4, 2));
     }
 }
+
