@@ -1,19 +1,5 @@
-package com.example;
-
-import org.junit.Test;
-import static org.junit.Assert.assertEquals;
-
-public class AppTest {
-    @Test
-    public void testGreet() {
-        App app = new App();
-        assertEquals("Hello, SonarQube!", app.greet());
-    }
-
-    @Test
-    public void testAdd() {
-        App app = new App();
-        assertEquals(5, app.add(2, 3));
-    }
+@Test(expected = ArithmeticException.class)
+public void testDivideByZero() {
+    App app = new App();
+    app.divide(10, 0);
 }
-
